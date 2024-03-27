@@ -10,4 +10,12 @@
 <br />
 {% endfor %}
 
+<h1>글자 수 세기</h1>
+{{ space_include }}자
+<br />
+
+<h1>띄어쓰기 제외 글자 수 세기</h1>
+{{ space_except }}자
+<br /><br />
+
 <a href="{% url 'wordCount' %}">다시하기</a>
