@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'result' %}">
+        <input type "text" name="word" cols="20" rows="1"></input>
+        <input type="submit" value="확인" />
+    {% for Phone in Phones %}
+        <h2>이름 : {{ Phone.name }}</h2>
+        <p>전화번호 : {{ Phone.phone_num }}</p>
+    {% empty %}
+        전화번호가 없습니다.
+    {% endfor %}
+</body>
+</html>
