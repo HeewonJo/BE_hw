@@ -7,7 +7,7 @@
 </head>
 <body>
     <form action="{% url 'result' %}">
-        <input type "text" name="word" cols="20" rows="1"></input>
+        <input type="text" name="word" cols="20" rows="1"></input>
         <input type="submit" value="확인" />
     {% for Phone in Phones %}
         <h2>이름 : {{ Phone.name }}</h2>

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Phone
 
 def list(request):
-    Phones = Phone.objects.all()
+    Phones = Phone.objects.all().order_by('name')
     return render(request, "Phone/list.html", {'Phones' : Phones})
 
 def result(request):
