@@ -1,0 +1,14 @@
+<body>
+    <h2>연락처 수정</h2>
+
+    <form method="POST" action="{% url 'update' phone.id %}">
+        {% csrf_token %}
+        이름:<br>
+        <input type="text" value="{{ phone.name }}" name="name"><br>
+        번호:<br>
+        <input type="text" value="{{ phone.phone_num }}" name="phone_num"></input><br>
+        이메일:<br>
+        <input type="email" value="{{ phone.email }}" name="email"></input><br><br>
+        <input type="submit" value="등록">
+    </form>
+</body>

@@ -1,0 +1,10 @@
+<body>
+    <h2>연락처 상세 조회</h2>
+    <p>
+        이름: {{ phone.name }}<br>
+        번호: {{ phone.phone_num }}<br>
+        이메일: {{ phone.email }}<br>
+        생성 날짜: {{ phone.created_at }}<br>
+    </p>
+    <a href="{% url 'list' %}">연락처 목록으로 돌아가기</a><br>
+</body>
