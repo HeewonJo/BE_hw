@@ -1,0 +1,44 @@
+<body>
+    {% load humanize %}
+
+    <a href={% url 'post:list' %}>메인페이지로 돌아가기</a><hr>
+    {% for category in categories %}
+        <a href={% url 'post:category' category.slug %} >{{ category.title }}</a>
+    {% endfor %}
+    <br>
+    <h1>{{ category.title }}</h1>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'accounts:logout' %}">로그아웃</a>
+        <a href="{% url 'accounts:my-page' %}">마이페이지</a>
+    {% else %}
+        <a href="{% url 'accounts:signup' %}">회원가입</a>
+        <a href="{% url 'accounts:login' %}">로그인</a>
+    {% endif %}
+    <br><br>
+    
+<form method="POST" action="{% url 'post:create' category.slug %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" placeholder="제목 입력" name="title"><br>
+    <textarea name="content" placeholder="본문 입력"></textarea><br><br>
+    이미지 - <input type="file" name="image"><br>
+    동영상 - <input type="file" name="video"><br><br>
+    <input type="checkbox" name="anonymity" value="anonymity_true">익명
+    <input type="submit" value="작성 완료">
+</form>
+<hr>
+
+{% for post in posts %}
+
+{% if post.anonymity %}
+    <h2><a href="{% url 'post:detail' post.id %}">{{ post.title }}</a></h2>
+    <p>{{ post.content }}</p>
+    <p>{{ post.created_at | naturaltime }}</p>
+{% else %}
+    <h2><a href="{% url 'post:detail' post.id %}">{{ post.title }}</a></h2>
+    <p>{{ post.content }}</p>
+    <p>{{ post.created_at | naturaltime }}</p>
+{% endif %}
+<hr>
+{% empty %} <h2>글이 없습니다.</h2> {% endfor %}
+
+</body>
